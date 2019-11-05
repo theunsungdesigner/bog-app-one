@@ -8,17 +8,17 @@ export default class BogListItem extends Component {
         const {
             bogId,
             name,
-            description,
-            onBogDeleteClick
+            onBogDeleteClick,
         } = this.props;
 
         return (
         <div className="bog-list-item" key={bogId}>
-            <div className="title">{name || ''}</div>
+            <div className="title">{name ||  ''}</div>
+            <div></div>
             
             <i className="material-icons delete"
                 onClick={()=> onBogDeleteClick(bogId)}>
-                clear
+                
             </i>
         </div>);
     }

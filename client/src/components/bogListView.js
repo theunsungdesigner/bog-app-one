@@ -24,9 +24,9 @@ export default class BogListView extends Component {
         return axios.get('/api/bog')
             .then((response) => {
                 console.log(response.data)
-                // this.setState({
-                //     bogList: response.data
-                // })
+                this.setState({
+                    bogList: response.data
+                })
             })
     }
 

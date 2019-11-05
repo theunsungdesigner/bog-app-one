@@ -8,20 +8,19 @@ const bogApi = require('../models/bog.js')
 const bogRouter = express.Router()
 
 
-bogRouter.get('/', (req, res) => {
-  res.json('hello')
-})
+
 //getAll
 bogRouter.get('/bog', (req, res) => {
   bogApi.getAllBogs()
     .then((allBogs) => {
       res.json(allBogs)
+      console.log(allBogs)
     })
 })
 
 // getOne
 bogRouter.get('/bog/:id', (req, res) => {
-  bogApi.getOneBog(req.params.id)
+  bogApi.getBogById(req.params.id)
     .then((singleBog) => {
      res.json(singleBog)
       // res.json(singleBog)
@@ -30,10 +29,10 @@ bogRouter.get('/bog/:id', (req, res) => {
 
 // update
 bogRouter.put('/bog/:id', (req, res) => {
-  bogApi.updateBog(req.params.id, req.body)
+  bogApi.updateBogById(req.params.id, req.body)
     .then((updatedBog) => {
       // res.json(updatedBog)
-      res.redirect(`/bog/${req.params.id}`)
+      res.json(updatedBog)
     })
 })
 
@@ -42,15 +41,15 @@ bogRouter.post('/bog/', (req, res) => {
   console.log(req.body)
   bogApi.createBog(req.body)
     .then((createdBog) => {
-      res.redirect('/bog')
+      res.json(createdBog)
     })
   })
 
 // delete
 bogRouter.delete('/bog/:id', (req, res) => {
-  bogApi.deleteBog(req.params.id)
+  bogApi.deleteBogById(req.params.id)
     .then((deletedBog) => {
-      res.redirect('/bog')
+      res.json(deletedBog)
       // res.json(deletedBog)
     })
 })

@@ -1,25 +1,24 @@
-const mongoose = require('./connection.js')
+const mongoose = require("./connection.js");
 const Schema = mongoose.schema;
 
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;
 
 const BogSchema = {
-  name: '',
-  description: ''
-}
+  name: "",
+  description: ""
+};
 
-const BogModel = mongoose.model('Bog', BogSchema);
+const BogModel = mongoose.model("Bog", BogSchema);
 //get all Bogs
-function getAllBog () {
+function getAllBogs() {
   return BogModel.find();
 }
 /**
  *  getBogById
  * @param {string} bogId
  */
-function getBogById () {
-  return BogModel
-  .findById(bogId)
+function getBogById(bogId) {
+  return BogModel.findById(bogId);
 }
 
 /**
@@ -27,27 +26,21 @@ function getBogById () {
  * @param {string} bogId
  */
 function deleteBogById(bogId) {
-  return BogModel
-      .findOneAndDelete({_id: bogId});
+  return BogModel.findOneAndDelete({ _id: bogId });
 }
 
 function updateBogById(bogId, bogData) {
-  return BogModel
-      .findOneAndUpdate({_id: bogId}, bogData);
+  return BogModel.findOneAndUpdate({ _id: bogId }, bogData);
 }
 
 function createBog(bogData) {
-  
-  return BogModel.create(bogData)
-  }
-
-
-
+  return BogModel.create(bogData);
+}
 
 module.exports = {
- deleteBogById,
- createBog,
- updateBogById,
- getBogById,
- getAllBog
-}
+  deleteBogById,
+  createBog,
+  updateBogById,
+  getBogById,
+  getAllBogs
+};
